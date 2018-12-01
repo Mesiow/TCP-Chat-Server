@@ -27,7 +27,7 @@ void Server::run()
 			if (sock == listening)
 			{
 				//accept connection
-				SOCKET client = accept(listening, (sockaddr*)&hint, 0);
+				SOCKET client = accept(listening, (sockaddr*)&info, 0);
 
 				//add client to list
 				FD_SET(client, &masterSet);
@@ -93,15 +93,15 @@ void Server::createListeningSocket()
 		return;
 	}
 
-	hint.sin_family = AF_INET;
-	hint.sin_port = htons(port);
-	hint.sin_addr.S_un.S_addr = INADDR_ANY;
+	info.sin_family = AF_INET;
+	info.sin_port = htons(port);
+	info.sin_addr.S_un.S_addr = INADDR_ANY;
 	Bind();
 }
 
 void Server::Bind()
 {
-	bind(listening, (sockaddr*)&hint, sizeof(hint));
+	bind(listening, (sockaddr*)&info, sizeof(info));
 	Listen();
 }
 

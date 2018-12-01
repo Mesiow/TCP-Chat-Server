@@ -26,7 +26,7 @@ private:
 private:
 	std::string ipAddress;
 	int port;
-	sockaddr_in hint; //struct to hold network info(i.e. port, ip)
+	sockaddr_in info; //struct to hold network info(i.e. port, ip)
 	SOCKET listening;
 
 private:
